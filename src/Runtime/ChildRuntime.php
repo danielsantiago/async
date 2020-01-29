@@ -3,9 +3,9 @@
 use Spatie\Async\Runtime\ParentRuntime;
 
 try {
-    $autoloader = $argv[1] ?? null;
-    $serializedClosure = $argv[2] ?? null;
-    $outputLength = $argv[3] ? intval($argv[3]) : (1024 * 10);
+    $autoloader = @$argv[1] ?? null;
+    $serializedClosure = @$argv[2] ?? null;
+    $outputLength = @$argv[3] ? intval($argv[3]) : (1024 * 10);
 
     if (! $autoloader) {
         throw new InvalidArgumentException('No autoloader provided in child process.');
