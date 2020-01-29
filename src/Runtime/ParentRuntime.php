@@ -64,13 +64,13 @@ class ParentRuntime
             return SynchronousProcess::create($task, self::getId());
         }
 
-        $process = new Process([
+        $process = new Process(implode(' ', [
             'php',
             self::$childProcessScript,
             self::$autoloader,
             self::encodeTask($task),
             $outputLength,
-        ]);
+        ]));
 
         return ParallelProcess::create($process, self::getId());
     }
